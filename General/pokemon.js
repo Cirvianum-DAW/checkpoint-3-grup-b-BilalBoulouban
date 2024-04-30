@@ -1,5 +1,6 @@
 // Afegeix aquí el codi de JS per a la pàgina pokemon.html
-const pokemon = document.getElementById("pokemon");
+//const pokemon = document.getElementById("pokemon");
+const pokemon = document.getElementById("sprite");
 addEventListener("submit", function (event) {
   event.preventDefault();
   const pokemonNomID = pokemon.value.trim().toLowerCase();
@@ -15,12 +16,26 @@ async function getPokemonInfo(pokemonNomID) {
     );
     const data = await response.json();
     return data;
+    if (response.ok) {
+      getpokemonhability(data);
+    }
   } catch (error) {
     console.error("El nom o el id del pokemon esta malament");
   }
 }
 
-getPokemonInfo(2);
-const swapi = {
-  request,
-};
+function getpokemonhability(data) {
+  const { name, id, height, weight, ability, sprites } = data;
+
+  const pokemonInfoHTML = `
+  <p>name: ${name}</p>
+
+        <p>ID: ${id}</p>
+        <p>Height: ${height / 10} m</p>
+        <p>Weight: ${weight / 10} kg</p>
+        <p>habilitat: ${ability / 10} kg</p>
+        <img src="${sprites}" alt="${name}">
+
+    `;
+  getPokemonInfo;
+}
