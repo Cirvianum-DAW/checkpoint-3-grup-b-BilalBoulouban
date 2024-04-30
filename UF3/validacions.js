@@ -25,28 +25,30 @@ function displayError(input, message) {
 
 // Cada validació...
 
-function validateName() {
-  removeExistingError(nameInput);
-  // Validació del nom...
-  if (name.length < 3) {
-    isValid = false;
-  } else {
-    usernameError.textContent = "";
-  }
-  // Si no és vàlid...
-  displayError(nameInput, "El nom no és vàlid");
+function validarNom(name) {
+  let nameRegex = /^[a-zA-ZÀ-ÿ\s]{3,50}$/;
+  return nameRegex.test(name);
 }
-function validEmail() {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    emailError.textContent = "Possa un correu valid";
-    isValid = false;
-  } else {
-    emailError.textContent = "";
-  }
+
+function validarEmail(email) {
+  let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
+function validarCognom(surname) {
+  let surnameRegex = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/;
+  return surnameRegex.test(surname);
+}
+function edat(age) {
+  let ageRegex = /(1[8-9]|2[0-9]|3[0-5])/;
+  return ageRegex.test(age);
+}
+function missatge(message) {
+  let ageRegex = /^[A-Z]{10,200}$/;
+  return ageRegex.test(age);
+}
+
 // addEventListeners...
-registrationForm.addEventListener("submit", function (event) {
+addEventListener("submit", function (event) {
   event.preventDefault();
 
   const registrationForm = document.getElementById("");
@@ -57,21 +59,49 @@ registrationForm.addEventListener("submit", function (event) {
   // const gender = characterItem.querySelector('strong:nth-of-type(3)').textContent.slice(8);
   const genderInput = document.getElementById("gender").value;
   const messageInput = document.getElementById("message").value;
-  const passwordInput = document.getElementById("password").value;
-  if (name.length < 3) {
-    usernameError.textContent =
-      "El nombre de usuario debe tener al menos 3 caracteres.";
-    isValid = false;
-  } else {
-    usernameError.textContent = "";
+  // if (
+  //   name == "" ||
+  //   surname == "" ||
+  //   age == "" ||
+  //   message == "" ||
+  //   genere == ""
+  // ) {
+  //   alert("Tots els camps són requerits!");
+  //   return false;
+  // }
+
+  //check if name is valid
+  // if (!validarNom(name)) {
+  //   alert("Nom no és vàlid");
+  //   return false;
+  // }
+  // check if surname is valid
+  if (!validarCognom(surname)) {
+    alert("Cognom no és vàlid");
+    return false;
   }
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    emailError.textContent = "Possa un correu electronic";
-    isValid = false;
-  } else {
-    emailError.textContent = "";
+  // check if email is valid
+  if (!validarEmail(correu)) {
+    alert("Email no és vàlid");
+    return false;
   }
+  if (!edat(edat)) {
+    alert("edat es menor");
+    return false;
+  }
+  if (!message(message)) {
+    alert("Misatge invalid");
+    return false;
+  }
+  //save the data in the sessionStorage
+  sessionStorage.setItem("nom", name);
+  sessionStorage.setItem("cognom", surname);
+  sessionStorage.setItem("correu", email);
+  sessionStorage.setItem("genere", genere);
+  sessionStorage.setItem("genere", message);
 
+  console.log("Usuari registrat correctament");
+  console.log(sessionStorage);
+  window.location.href = "meteo.html";
 });

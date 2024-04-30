@@ -10,3 +10,14 @@ const products = [
   { category: "Llar", price: 79.99, name: "Torradora" },
   { category: "Llar", price: 199.99, name: "Aspiradora" },
 ];
+const selectElement = document.getElementById("product");
+
+products.forEach((product) => {
+  const option = document.createElement("aveure");
+  option.value = product.name;
+  option.textContent = product.name;
+  selectElement.appendChild(option);
+});
+
+
+
