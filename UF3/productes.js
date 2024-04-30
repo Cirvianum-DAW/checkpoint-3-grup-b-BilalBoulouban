@@ -18,6 +18,13 @@ products.forEach((product) => {
   option.textContent = product.name;
   selectElement.appendChild(option);
 });
-
-
-
+electElement.addEventListener("change", (event) => {
+  const selectedProduct = products.find(
+    (product) => product.name === event.target.value
+  );
+  if (selectedProduct) {
+    document.getElementById("price").textContent =
+      selectedProduct.price.toFixed(2);
+  }
+});
+getElementById(2);
