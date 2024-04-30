@@ -8,7 +8,7 @@
 // const pokemonInput = document.getElementById("sprite");
 
 //const pokemonInfo = document.getElementById("pokemonInfo");
-addEventListener("submit", function (event) {
+addEventListener("click", function (event) {
   event.preventDefault();
   const pokemonNomID = pokemon.value.trim().toLowerCase();
   if (pokemonNomID) {

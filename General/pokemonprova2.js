@@ -22,7 +22,7 @@ const loadPokemons = () => {
       });
     })
     .catch((error) => {
-      console.error("Error fetching the Pokemons", error);
+      console.error("Error trubant el pockemon", error);
     });
 };
 
