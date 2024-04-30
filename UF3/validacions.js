@@ -28,7 +28,11 @@ function displayError(input, message) {
 function validateName() {
   removeExistingError(nameInput);
   // Validació del nom...
-
+  if (username.length < 3) {
+    isValid = false;
+} else {
+    usernameError.textContent = '';
+}
   // Si no és vàlid...
   displayError(nameInput, "El nom no és vàlid");
 }
