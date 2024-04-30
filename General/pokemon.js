@@ -21,6 +21,7 @@ async function getPokemonInfo(pokemonNomID) {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonNomID}`
     );
+
     const data = await response.json();
     return data;
     if (response.ok) {
