@@ -1,6 +1,13 @@
 // Afegeix aquí el codi de JS per a la pàgina pokemon.html
 //const pokemon = document.getElementById("pokemon");
-const pokemon = document.getElementById("sprite");
+// const pokemonForm = document.getElementById("pokemon");
+// const pokemon2 = document.getElementById("name");
+// const pokemon3 = document.getElementById("height");
+// const pokemon4 = document.getElementById("weight");
+// const pokemon5 = document.getElementById("abilities");
+// const pokemonInput = document.getElementById("sprite");
+
+//const pokemonInfo = document.getElementById("pokemonInfo");
 addEventListener("submit", function (event) {
   event.preventDefault();
   const pokemonNomID = pokemon.value.trim().toLowerCase();
@@ -27,9 +34,8 @@ async function getPokemonInfo(pokemonNomID) {
 function getpokemonhability(data) {
   const { name, id, height, weight, ability, sprites } = data;
 
-  const pokemonInfoHTML = `
+  const pokemonhability = `
   <p>name: ${name}</p>
-
         <p>ID: ${id}</p>
         <p>Height: ${height / 10} m</p>
         <p>Weight: ${weight / 10} kg</p>
@@ -38,4 +44,5 @@ function getpokemonhability(data) {
 
     `;
   getPokemonInfo;
+  getpokemonhability;
 }

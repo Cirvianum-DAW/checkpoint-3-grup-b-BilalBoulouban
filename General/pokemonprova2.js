@@ -1,5 +1,5 @@
 const loadPokemons = () => {
-  fetch("https://pokeapi.co/api/v2/pokemon/?limit=1")
+  fetch(" `https://pokeapi.co/api/v2/pokemon/2")
     .then((response) => {
       console.log("response", response);
 
